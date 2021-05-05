@@ -54,7 +54,7 @@ ROOT_URLCONF = 'DSLabFinal.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['DSLabFinal/templates/', '/model/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

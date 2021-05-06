@@ -3,7 +3,7 @@
 {% block body %}
 <div class="bg-light">
     <div class="container py-3">
-        <form action="model" enctype="multipart/form-data" method="post">
+        <form class="row" method="post" enctype="multipart/form-data">
             <label for="reviewText">Enter review text:</label><br>
             <input type="text" id="reviewText" name="reviewText" value="Enter review text."><br>
             {% csrf_token %}

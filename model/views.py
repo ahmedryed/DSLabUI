@@ -15,6 +15,7 @@ def model(request):
     global testVar
     if request.method == 'POST' and 'Submit' in request.POST:
         print(testVar)
+        print("HELLO")
     return render(request, 'model.html')
 
 

@@ -5,12 +5,18 @@ from django.core.files.storage import FileSystemStorage
 import os
 from pathlib import Path
 import sys
-from PIL import Image
 
 # views.py
 
+testVar = "wow"
+
+
 def model(request):
+    global testVar
+    if request.method == 'POST' and 'Submit' in request.POST:
+        print(testVar)
     return render(request, 'model.html')
+
 
 '''
 
@@ -54,6 +60,7 @@ def binary_classifier(request):
 
     return render(request, 'model.html', {'img1_path': img1_path, 'img2_path': img2_path, 'classify_val': classify_val, 'vis1': gradcam_vis1, 'vis2': gradcam_vis2, 'box1': box_vis1, 'box2': box_vis2})
 '''
+
 
 def about(request):
     return render(request, 'about.html')

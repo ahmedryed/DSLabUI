@@ -5,10 +5,22 @@
     <div class="container py-3">
         <form class="row" method="post" enctype="multipart/form-data">
             <label for="reviewText">Enter review text:</label><br>
-            <input type="text" id="reviewText" name="reviewText" value="Enter review text."><br>
+            <input type="text" id="reviewText" name="reviewText" value=""><br>
             {% csrf_token %}
             <button type="submit" name="Submit" class="mt-2 btn btn-dark rounded mx-auto d-block"> Submit</button>
         </form>
+        <form class="row" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <button type="submit" name="trainModel" class="mt-2 btn btn-dark rounded mx-auto d-block"> Train
+                Model</button>
+        </form>
+        <div class="py-2 row text-center">
+            {% if pred_val != 'NaN'%}
+            <h2> Score: {{pred_val}} </h2>
+            {% else %}
+            <h4> Click "Submit" to make a prediction. </h4>
+            {% endif %}
+        </div>
     </div>
 </div>
 

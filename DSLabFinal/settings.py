@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'model',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +55,8 @@ ROOT_URLCONF = 'DSLabFinal.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['DSLabFinal/templates/', '/model/templates/'],
+        # 'DIRS': ['DSLabFinal/templates/', '/model/templates/'],
+        'DIRS': ['DSLabFinal/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

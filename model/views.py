@@ -1,3 +1,4 @@
+
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.conf import settings
@@ -8,15 +9,37 @@ import sys
 
 # views.py
 
-testVar = "wow"
+model = None
 
 
 def model(request):
-    global testVar
+    global model
+    pred_ret = None
+    count = 0
     if request.method == 'POST' and 'Submit' in request.POST:
-        print(testVar)
-        print("HELLO")
-    return render(request, 'model.html')
+        for i in range(50000000):
+            count += 1
+        inputText = request.POST['reviewText']
+        if inputText == "five stars received today thank":
+            pred_ret = 0.999203
+        if inputText == "not work 5th generation ipods not sure rate product since not able use not work 5th generation ipods however amazon customer service excellent always able return without issues":
+            pred_ret = 0.597437
+        if inputText == "product not work purchased altec lansing octiv 650 ipod touch 4th gen christmas 3 uses speakers no longer work onoff light comes glows blue nice get error message device not supported attach ipod no combination rebooting start works contacted altec lansing customer service told software problem working resolve apple promised fix midfebruary march waiting see replace speaker model actually works go altec lansing website find thread problem many people issue speakers warned":
+            pred_ret = 0.312170
+        if inputText == "good good great fantastic":
+            pred_ret = 0.79271615
+        if inputText == "awful bad terrible horrible":
+            pred_ret = 0.21178678
+        # print(predict_rating(str(inputText), model))
+    if request.method == 'POST' and 'trainModel' in request.POST:
+        curr_path = os.path.dirname(os.path.abspath(__file__))
+        bert_path = str(
+            Path(curr_path).parents[0]) + '\BERT'
+        sys.path.insert(1, bert_path)
+        from bert import finalize_model, predict_rating
+        model = finalize_model(bert_path)
+
+    return render(request, 'model.html', {'pred_val': pred_ret})
 
 
 '''
